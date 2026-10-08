@@ -1,0 +1,188 @@
+# Reading C:/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
+# ERROR: No extended dataflow license exists
+# do lab5_0_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/quartus/verilog\ -\ 7\ semestr/lab5/lab5_0 {C:/quartus/verilog - 7 semestr/lab5/lab5_0/shift_register.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module shift_register
+# 
+# Top level modules:
+# 	shift_register
+# vlog -vlog01compat -work work +incdir+C:/quartus/verilog\ -\ 7\ semestr/lab5/lab5_0 {C:/quartus/verilog - 7 semestr/lab5/lab5_0/register_acc.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module register_acc
+# 
+# Top level modules:
+# 	register_acc
+# vlog -vlog01compat -work work +incdir+C:/quartus/verilog\ -\ 7\ semestr/lab5/lab5_0 {C:/quartus/verilog - 7 semestr/lab5/lab5_0/control_unit.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module control_unit
+# 
+# Top level modules:
+# 	control_unit
+# vlog -vlog01compat -work work +incdir+C:/quartus/verilog\ -\ 7\ semestr/lab5/lab5_0 {C:/quartus/verilog - 7 semestr/lab5/lab5_0/structure.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module structure
+# 
+# Top level modules:
+# 	structure
+# vlog -vlog01compat -work work +incdir+C:/quartus/verilog\ -\ 7\ semestr/lab5/lab5_0 {C:/quartus/verilog - 7 semestr/lab5/lab5_0/sseg.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module sseg
+# 
+# Top level modules:
+# 	sseg
+# 
+# vlog -vlog01compat -work work +incdir+C:/quartus/verilog\ -\ 7\ semestr/lab5/lab5_0 {C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module lab5_0tb
+# 
+# Top level modules:
+# 	lab5_0tb
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs="+acc"  lab5_0tb
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps lab5_0tb 
+# Loading work.lab5_0tb
+# Loading work.structure
+# Loading work.sseg
+# Loading work.shift_register
+# Loading work.register_acc
+# Loading work.control_unit
+# ** Warning: (vsim-3017) C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v(27): [TFMPC] - Too few port connections. Expected 15, found 7.
+# 
+#         Region: /lab5_0tb/uut
+# ** Warning: (vsim-3722) C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v(27): [TFMPC] - Missing connection for port 'a'.
+# 
+# ** Warning: (vsim-3722) C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v(27): [TFMPC] - Missing connection for port 'b'.
+# 
+# ** Warning: (vsim-3722) C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v(27): [TFMPC] - Missing connection for port 'c'.
+# 
+# ** Warning: (vsim-3722) C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v(27): [TFMPC] - Missing connection for port 'd'.
+# 
+# ** Warning: (vsim-3722) C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v(27): [TFMPC] - Missing connection for port 'e'.
+# 
+# ** Warning: (vsim-3722) C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v(27): [TFMPC] - Missing connection for port 'f'.
+# 
+# ** Warning: (vsim-3722) C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v(27): [TFMPC] - Missing connection for port 'g'.
+# 
+# ** Warning: (vsim-3722) C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v(27): [TFMPC] - Missing connection for port 'h'.
+# 
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# TEST   1: PASS | in=00100100 mode=1 result=  2 expected=  2
+# TEST   2: PASS | in=00001001 mode=1 result=  2 expected=  2
+# TEST   3: PASS | in=00001101 mode=1 result=  3 expected=  3
+# TEST   4: PASS | in=01100101 mode=0 result=  4 expected=  4
+# TEST   5: PASS | in=00000001 mode=1 result=  1 expected=  1
+# TEST   6: PASS | in=01110110 mode=1 result=  5 expected=  5
+# TEST   7: PASS | in=11101101 mode=0 result=  2 expected=  2
+# TEST   8: PASS | in=11111001 mode=0 result=  2 expected=  2
+# TEST   9: PASS | in=11000101 mode=0 result=  4 expected=  4
+# TEST  10: PASS | in=11100101 mode=1 result=  5 expected=  5
+# TEST  11: PASS | in=00010010 mode=1 result=  2 expected=  2
+# TEST  12: PASS | in=11110010 mode=0 result=  3 expected=  3
+# TEST  13: PASS | in=11101000 mode=1 result=  4 expected=  4
+# TEST  14: PASS | in=01011100 mode=1 result=  4 expected=  4
+# TEST  15: PASS | in=00101101 mode=1 result=  4 expected=  4
+# TEST  16: PASS | in=01100011 mode=0 result=  4 expected=  4
+# TEST  17: PASS | in=10000000 mode=0 result=  7 expected=  7
+# TEST  18: PASS | in=10101010 mode=1 result=  4 expected=  4
+# TEST  19: PASS | in=10010110 mode=1 result=  4 expected=  4
+# TEST  20: PASS | in=00001101 mode=1 result=  3 expected=  3
+# TEST  21: PASS | in=01101011 mode=1 result=  5 expected=  5
+# TEST  22: PASS | in=00000010 mode=0 result=  7 expected=  7
+# TEST  23: PASS | in=00011101 mode=1 result=  4 expected=  4
+# TEST  24: PASS | in=00100011 mode=0 result=  5 expected=  5
+# TEST  25: PASS | in=11001010 mode=0 result=  4 expected=  4
+# TEST  26: PASS | in=11110010 mode=0 result=  3 expected=  3
+# TEST  27: PASS | in=01000001 mode=0 result=  6 expected=  6
+# TEST  28: PASS | in=01111000 mode=1 result=  4 expected=  4
+# TEST  29: PASS | in=11101011 mode=0 result=  2 expected=  2
+# TEST  30: PASS | in=11000110 mode=0 result=  4 expected=  4
+# TEST  31: PASS | in=10111100 mode=0 result=  3 expected=  3
+# TEST  32: PASS | in=00001011 mode=1 result=  3 expected=  3
+# TEST  33: PASS | in=10000101 mode=1 result=  3 expected=  3
+# TEST  34: PASS | in=00111011 mode=0 result=  3 expected=  3
+# TEST  35: PASS | in=01111110 mode=1 result=  6 expected=  6
+# TEST  36: PASS | in=11110001 mode=1 result=  5 expected=  5
+# TEST  37: PASS | in=01100010 mode=0 result=  5 expected=  5
+# TEST  38: PASS | in=10011111 mode=1 result=  6 expected=  6
+# TEST  39: PASS | in=11111000 mode=1 result=  5 expected=  5
+# TEST  40: PASS | in=10011111 mode=0 result=  2 expected=  2
+# TEST  41: PASS | in=01011011 mode=1 result=  5 expected=  5
+# TEST  42: PASS | in=01001001 mode=0 result=  5 expected=  5
+# TEST  43: PASS | in=11010111 mode=1 result=  6 expected=  6
+# TEST  44: PASS | in=10010110 mode=0 result=  4 expected=  4
+# TEST  45: PASS | in=11000010 mode=0 result=  5 expected=  5
+# TEST  46: PASS | in=01110111 mode=1 result=  6 expected=  6
+# TEST  47: PASS | in=00010010 mode=0 result=  6 expected=  6
+# TEST  48: PASS | in=01101101 mode=1 result=  5 expected=  5
+# TEST  49: PASS | in=00011111 mode=1 result=  5 expected=  5
+# TEST  50: PASS | in=10000101 mode=0 result=  5 expected=  5
+# TEST  51: PASS | in=01011011 mode=1 result=  5 expected=  5
+# TEST  52: PASS | in=00111111 mode=0 result=  2 expected=  2
+# TEST  53: PASS | in=01011000 mode=0 result=  5 expected=  5
+# TEST  54: PASS | in=10001110 mode=0 result=  4 expected=  4
+# TEST  55: PASS | in=11111010 mode=0 result=  2 expected=  2
+# TEST  56: PASS | in=01110011 mode=1 result=  5 expected=  5
+# TEST  57: PASS | in=00101111 mode=1 result=  5 expected=  5
+# TEST  58: PASS | in=01011111 mode=0 result=  2 expected=  2
+# TEST  59: PASS | in=11110111 mode=1 result=  7 expected=  7
+# TEST  60: PASS | in=11100110 mode=0 result=  3 expected=  3
+# TEST  61: PASS | in=00101001 mode=1 result=  3 expected=  3
+# TEST  62: PASS | in=11011010 mode=1 result=  5 expected=  5
+# TEST  63: PASS | in=10110101 mode=1 result=  5 expected=  5
+# TEST  64: PASS | in=01111001 mode=0 result=  3 expected=  3
+# TEST  65: PASS | in=11010000 mode=0 result=  5 expected=  5
+# TEST  66: PASS | in=10101011 mode=0 result=  3 expected=  3
+# TEST  67: PASS | in=11011100 mode=0 result=  3 expected=  3
+# TEST  68: PASS | in=11111101 mode=1 result=  7 expected=  7
+# TEST  69: PASS | in=01010110 mode=0 result=  4 expected=  4
+# TEST  70: PASS | in=01100111 mode=0 result=  3 expected=  3
+# TEST  71: PASS | in=10110110 mode=0 result=  3 expected=  3
+# TEST  72: PASS | in=01111001 mode=0 result=  3 expected=  3
+# TEST  73: PASS | in=10010100 mode=1 result=  3 expected=  3
+# TEST  74: PASS | in=00000100 mode=1 result=  1 expected=  1
+# TEST  75: PASS | in=11011011 mode=1 result=  6 expected=  6
+# TEST  76: PASS | in=11011001 mode=1 result=  5 expected=  5
+# TEST  77: PASS | in=01110110 mode=0 result=  3 expected=  3
+# TEST  78: PASS | in=10110110 mode=1 result=  5 expected=  5
+# TEST  79: PASS | in=01000110 mode=0 result=  5 expected=  5
+# TEST  80: PASS | in=11110111 mode=1 result=  7 expected=  7
+# TEST  81: PASS | in=10110100 mode=0 result=  4 expected=  4
+# TEST  82: PASS | in=00101000 mode=1 result=  2 expected=  2
+# TEST  83: PASS | in=11000111 mode=0 result=  3 expected=  3
+# TEST  84: PASS | in=00001000 mode=0 result=  7 expected=  7
+# TEST  85: PASS | in=11111101 mode=1 result=  7 expected=  7
+# TEST  86: PASS | in=00011100 mode=0 result=  5 expected=  5
+# TEST  87: PASS | in=11011010 mode=1 result=  5 expected=  5
+# TEST  88: PASS | in=01100110 mode=0 result=  4 expected=  4
+# TEST  89: PASS | in=01110011 mode=0 result=  3 expected=  3
+# TEST  90: PASS | in=01011110 mode=0 result=  3 expected=  3
+# TEST  91: PASS | in=11010101 mode=0 result=  3 expected=  3
+# TEST  92: PASS | in=10111001 mode=1 result=  5 expected=  5
+# TEST  93: PASS | in=10010110 mode=0 result=  4 expected=  4
+# TEST  94: PASS | in=00100110 mode=0 result=  5 expected=  5
+# TEST  95: PASS | in=01111101 mode=0 result=  2 expected=  2
+# TEST  96: PASS | in=10000110 mode=0 result=  5 expected=  5
+# TEST  97: PASS | in=01111110 mode=1 result=  6 expected=  6
+# TEST  98: PASS | in=11001111 mode=1 result=  6 expected=  6
+# TEST  99: PASS | in=11111010 mode=1 result=  6 expected=  6
+# TEST 100: PASS | in=00010111 mode=1 result=  4 expected=  4
+# Break in Module lab5_0tb at C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v line 84
+# Simulation Breakpoint: Break in Module lab5_0tb at C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v line 84
+# MACRO ./lab5_0_run_msim_rtl_verilog.do PAUSED at line 21

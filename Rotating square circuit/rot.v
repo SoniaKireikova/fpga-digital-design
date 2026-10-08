@@ -1,0 +1,130 @@
+module rot 
+(
+input wire clk,
+input wire en, //enables or pauses the circulation
+input wire sw, //specifies the direction (i.e., clockwise or counterclockwise) of the circulation. 
+output reg [3:0] en_sseg, //wich sseg is on 
+output reg [6:0] sseg //what figure on the sseg 
+); 
+
+//declaration 
+reg[24:0] r_reg, r_next;
+reg [6:0] sseg_up, sseg_down; 
+ 
+
+//register 
+always @(posedge clk) 
+begin 
+r_reg <= r_next; 
+end
+
+//next-state logic 
+always @* 
+begin 
+if(en)
+r_next = r_reg + 1;
+else 
+r_next = r_reg;  
+end
+
+//output logic 
+always @*
+begin 
+sseg_up = 7'b0011100; 
+sseg_down = 7'b1100010; 
+if(sw) //clockwise
+	begin 
+		case (r_reg[24:22])
+			3'b000: 
+				begin
+				en_sseg = 4'b0111; 
+				sseg = sseg_up; 
+				end
+			3'b001: 
+				begin
+				en_sseg = 4'b1011; 
+				sseg = sseg_up; 
+				end
+			3'b010:
+				begin 
+				en_sseg = 4'b1101; 
+				sseg = sseg_up; 
+				end
+			3'b011: 
+				begin 
+				en_sseg = 4'b1110; 
+				sseg = sseg_up; 
+				end
+			3'b100: 
+				begin 
+				en_sseg = 4'b1110; 
+				sseg = sseg_down; 
+				end
+			3'b101: 
+				begin 
+				en_sseg = 4'b1101; 
+				sseg = sseg_down; 
+				end 
+			3'b110: 
+				begin 
+				en_sseg = 4'b1011; 
+				sseg = sseg_down; 
+				end 
+			3'b111: 
+				begin 
+				en_sseg = 4'b0111; 
+				sseg = sseg_down; 
+				end 
+			endcase 
+		end 
+else 
+	begin 
+		case (r_reg[24:22])
+			3'b000: 
+				begin 
+				en_sseg = 4'b0111; 
+				sseg = sseg_up; 
+				end 
+			3'b001: 
+				begin 
+				en_sseg = 4'b0111; 
+				sseg = sseg_down; 
+				end
+			3'b010: 
+				begin 
+				en_sseg = 4'b1011; 
+				sseg = sseg_down; 
+				end 
+			3'b011: 
+				begin 
+				en_sseg = 4'b1101; 
+				sseg = sseg_down; 
+				end
+			3'b100: 
+				begin 
+				en_sseg = 4'b1110; 
+				sseg = sseg_down; 
+				end
+			3'b101: 
+				begin 
+				en_sseg = 4'b1110; 
+				sseg = sseg_up; 
+				end 
+			3'b110: 
+				begin 
+				en_sseg = 4'b1101; 
+				sseg = sseg_up; 
+				end
+			3'b111: 
+				begin 
+				en_sseg = 4'b1011; 
+				sseg = sseg_up; 
+				end
+			endcase
+		end 
+		
+			
+			
+end
+
+endmodule

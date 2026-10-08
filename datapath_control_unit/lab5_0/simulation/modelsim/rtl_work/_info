@@ -1,0 +1,125 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\quartus\verilog - 7 semestr\lab5\lab5_0\simulation\modelsim
+vcontrol_unit
+Idc6iQ;0Bb]mTQHKdP7P]d1
+VhUNHMN8UC7lVnFnN<Y?GI1
+Z1 dC:\quartus\verilog - 7 semestr\lab5\lab5_0\simulation\modelsim
+w1790743633
+8C:/quartus/verilog - 7 semestr/lab5/lab5_0/control_unit.v
+FC:/quartus/verilog - 7 semestr/lab5/lab5_0/control_unit.v
+L0 1
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work {+incdir+C:/quartus/verilog - 7 semestr/lab5/lab5_0} -O0
+!i10b 1
+!s100 R:JSA;NBebImSzG;lAiba3
+!s85 0
+!s108 1790772679.045000
+!s107 C:/quartus/verilog - 7 semestr/lab5/lab5_0/control_unit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/quartus/verilog - 7 semestr/lab5/lab5_0|C:/quartus/verilog - 7 semestr/lab5/lab5_0/control_unit.v|
+!s101 -O0
+vlab5_0tb
+!i10b 1
+!s100 1oD@fG=0^f0_NNcGjhh2^1
+IFK?;2cVIWKW9R@5VR8J2R1
+Vbbl>=04hK7f1e=GRoQH=N2
+R1
+w1790772039
+8C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v
+FC:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1790772679.241000
+!s107 C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/quartus/verilog - 7 semestr/lab5/lab5_0|C:/quartus/verilog - 7 semestr/lab5/lab5_0/lab5_0tb.v|
+!s101 -O0
+R3
+R4
+vregister_acc
+I<6VgWUnN;gQ_5?;`MG;=70
+V1WPZ_am]8i9F:JcS8i7f90
+R1
+w1790743461
+8C:/quartus/verilog - 7 semestr/lab5/lab5_0/register_acc.v
+FC:/quartus/verilog - 7 semestr/lab5/lab5_0/register_acc.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 ?Ijf5F67MVG@YJTAiWN^e2
+!s85 0
+!s108 1790772678.972000
+!s107 C:/quartus/verilog - 7 semestr/lab5/lab5_0/register_acc.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/quartus/verilog - 7 semestr/lab5/lab5_0|C:/quartus/verilog - 7 semestr/lab5/lab5_0/register_acc.v|
+!s101 -O0
+vshift_register
+Ib81_ULeMA^>:1HPo>mIT>3
+V493BYl:60l7c8M:F06F@E2
+R1
+w1790741873
+8C:/quartus/verilog - 7 semestr/lab5/lab5_0/shift_register.v
+FC:/quartus/verilog - 7 semestr/lab5/lab5_0/shift_register.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 E:W]HodLB>FULC6mV9@F]3
+!s85 0
+!s108 1790772678.903000
+!s107 C:/quartus/verilog - 7 semestr/lab5/lab5_0/shift_register.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/quartus/verilog - 7 semestr/lab5/lab5_0|C:/quartus/verilog - 7 semestr/lab5/lab5_0/shift_register.v|
+!s101 -O0
+vsseg
+IXeN^iEZaTzP5XzB8=I5<c1
+Vl91<DZ>dN`WNNJlbmX?>K3
+R1
+w1790754065
+8C:/quartus/verilog - 7 semestr/lab5/lab5_0/sseg.v
+FC:/quartus/verilog - 7 semestr/lab5/lab5_0/sseg.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 `5<bLRDoYVA8F;m:J`GYi2
+!s85 0
+!s108 1790772679.177000
+!s107 C:/quartus/verilog - 7 semestr/lab5/lab5_0/sseg.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/quartus/verilog - 7 semestr/lab5/lab5_0|C:/quartus/verilog - 7 semestr/lab5/lab5_0/sseg.v|
+!s101 -O0
+vstructure
+I5>iW56T:V`NL;^Mg^3K2I3
+V>DONU>VJcKTkXhfIYBnP30
+R1
+w1790772602
+8C:/quartus/verilog - 7 semestr/lab5/lab5_0/structure.v
+FC:/quartus/verilog - 7 semestr/lab5/lab5_0/structure.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 ;`S]`E?ZaBgIAggdWaJ<d3
+!s85 0
+!s108 1790772679.112000
+!s107 C:/quartus/verilog - 7 semestr/lab5/lab5_0/structure.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/quartus/verilog - 7 semestr/lab5/lab5_0|C:/quartus/verilog - 7 semestr/lab5/lab5_0/structure.v|
+!s101 -O0
