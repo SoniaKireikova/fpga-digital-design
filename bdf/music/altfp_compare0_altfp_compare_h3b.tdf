@@ -1,0 +1,276 @@
+--altfp_compare CBX_AUTO_BLACKBOX="ALL" DEVICE_FAMILY="Cyclone II" PIPELINE=3 WIDTH_EXP=8 WIDTH_MAN=23 aeb clock dataa datab
+--VERSION_BEGIN 13.0 cbx_altfp_compare 2013:06:12:18:03:43:SJ cbx_cycloneii 2013:06:12:18:03:43:SJ cbx_lpm_add_sub 2013:06:12:18:03:43:SJ cbx_lpm_compare 2013:06:12:18:03:43:SJ cbx_mgl 2013:06:12:18:05:10:SJ cbx_stratix 2013:06:12:18:03:43:SJ cbx_stratixii 2013:06:12:18:03:43:SJ  VERSION_END
+
+
+-- Copyright (C) 1991-2013 Altera Corporation
+--  Your use of Altera Corporation's design tools, logic functions 
+--  and other software and tools, and its AMPP partner logic 
+--  functions, and any output files from any of the foregoing 
+--  (including device programming or simulation files), and any 
+--  associated documentation or information are expressly subject 
+--  to the terms and conditions of the Altera Program License 
+--  Subscription Agreement, Altera MegaCore Function License 
+--  Agreement, or other applicable license agreement, including, 
+--  without limitation, that your use is for the sole purpose of 
+--  programming logic devices manufactured by Altera and sold by 
+--  Altera or its authorized distributors.  Please refer to the 
+--  applicable agreement for further details.
+
+
+FUNCTION lpm_compare (aclr, clken, clock, dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0])
+WITH ( LPM_PIPELINE, LPM_REPRESENTATION, LPM_WIDTH, ONE_INPUT_IS_CONSTANT)
+RETURNS ( aeb, agb, ageb, alb, aleb, aneb);
+
+--synthesis_resources = lpm_compare 4 reg 17 
+SUBDESIGN altfp_compare0_altfp_compare_h3b
+( 
+	aeb	:	output;
+	clock	:	input;
+	dataa[31..0]	:	input;
+	datab[31..0]	:	input;
+) 
+VARIABLE 
+	aligned_dataa_sign_adjusted_w_dffe2 : dffe;
+	aligned_dataa_sign_dffe1 : dffe;
+	aligned_datab_sign_adjusted_w_dffe2 : dffe;
+	aligned_datab_sign_dffe1 : dffe;
+	both_inputs_zero_dffe2 : dffe;
+	exp_a_all_one_w_dffe1 : dffe;
+	exp_a_not_zero_w_dffe1 : dffe;
+	exp_aeb_w_dffe2 : dffe;
+	exp_b_all_one_w_dffe1 : dffe;
+	exp_b_not_zero_w_dffe1 : dffe;
+	input_dataa_nan_dffe2 : dffe;
+	input_datab_nan_dffe2 : dffe;
+	man_a_not_zero_w_dffe1a[1..0] : dffe;
+	man_b_not_zero_w_dffe1a[1..0] : dffe;
+	out_aeb_w_dffe3 : dffe;
+	cmpr1 : lpm_compare
+		WITH (
+			LPM_PIPELINE = 1,
+			LPM_REPRESENTATION = "UNSIGNED",
+			LPM_WIDTH = 8
+		);
+	cmpr2 : lpm_compare
+		WITH (
+			LPM_PIPELINE = 1,
+			LPM_REPRESENTATION = "UNSIGNED",
+			LPM_WIDTH = 8
+		);
+	cmpr3 : lpm_compare
+		WITH (
+			LPM_PIPELINE = 1,
+			LPM_REPRESENTATION = "UNSIGNED",
+			LPM_WIDTH = 8
+		);
+	cmpr4 : lpm_compare
+		WITH (
+			LPM_PIPELINE = 1,
+			LPM_REPRESENTATION = "UNSIGNED",
+			LPM_WIDTH = 7
+		);
+	aclr	: NODE;
+	aligned_dataa_sign_adjusted_dffe2_wi	: WIRE;
+	aligned_dataa_sign_adjusted_dffe2_wo	: WIRE;
+	aligned_dataa_sign_adjusted_w	: WIRE;
+	aligned_dataa_sign_dffe1_wi	: WIRE;
+	aligned_dataa_sign_dffe1_wo	: WIRE;
+	aligned_dataa_sign_w	: WIRE;
+	aligned_dataa_w[30..0]	: WIRE;
+	aligned_datab_sign_adjusted_dffe2_wi	: WIRE;
+	aligned_datab_sign_adjusted_dffe2_wo	: WIRE;
+	aligned_datab_sign_adjusted_w	: WIRE;
+	aligned_datab_sign_dffe1_wi	: WIRE;
+	aligned_datab_sign_dffe1_wo	: WIRE;
+	aligned_datab_sign_w	: WIRE;
+	aligned_datab_w[30..0]	: WIRE;
+	both_inputs_zero	: WIRE;
+	both_inputs_zero_dffe2_wi	: WIRE;
+	both_inputs_zero_dffe2_wo	: WIRE;
+	clk_en	: NODE;
+	exp_a_all_one_dffe1_wi	: WIRE;
+	exp_a_all_one_dffe1_wo	: WIRE;
+	exp_a_all_one_w[7..0]	: WIRE;
+	exp_a_not_zero_dffe1_wi	: WIRE;
+	exp_a_not_zero_dffe1_wo	: WIRE;
+	exp_a_not_zero_w[7..0]	: WIRE;
+	exp_aeb[3..0]	: WIRE;
+	exp_aeb_tmp_w[3..0]	: WIRE;
+	exp_aeb_w	: WIRE;
+	exp_aeb_w_dffe2_wi	: WIRE;
+	exp_aeb_w_dffe2_wo	: WIRE;
+	exp_agb[3..0]	: WIRE;
+	exp_agb_tmp_w[3..0]	: WIRE;
+	exp_b_all_one_dffe1_wi	: WIRE;
+	exp_b_all_one_dffe1_wo	: WIRE;
+	exp_b_all_one_w[7..0]	: WIRE;
+	exp_b_not_zero_dffe1_wi	: WIRE;
+	exp_b_not_zero_dffe1_wo	: WIRE;
+	exp_b_not_zero_w[7..0]	: WIRE;
+	exp_eq_grp[2..0]	: WIRE;
+	exp_eq_gt_grp[3..0]	: WIRE;
+	input_dataa_nan_dffe2_wi	: WIRE;
+	input_dataa_nan_dffe2_wo	: WIRE;
+	input_dataa_nan_w	: WIRE;
+	input_dataa_zero_w	: WIRE;
+	input_datab_nan_dffe2_wi	: WIRE;
+	input_datab_nan_dffe2_wo	: WIRE;
+	input_datab_nan_w	: WIRE;
+	input_datab_zero_w	: WIRE;
+	man_a_not_zero_dffe1_wi[1..0]	: WIRE;
+	man_a_not_zero_dffe1_wo[1..0]	: WIRE;
+	man_a_not_zero_merge_w[1..0]	: WIRE;
+	man_a_not_zero_w[22..0]	: WIRE;
+	man_b_not_zero_dffe1_wi[1..0]	: WIRE;
+	man_b_not_zero_dffe1_wo[1..0]	: WIRE;
+	man_b_not_zero_merge_w[1..0]	: WIRE;
+	man_b_not_zero_w[22..0]	: WIRE;
+	out_aeb_dffe3_wi	: WIRE;
+	out_aeb_dffe3_wo	: WIRE;
+	out_aeb_w	: WIRE;
+	out_unordered_w	: WIRE;
+
+BEGIN 
+	aligned_dataa_sign_adjusted_w_dffe2.clk = clock;
+	aligned_dataa_sign_adjusted_w_dffe2.clrn = (! aclr);
+	aligned_dataa_sign_adjusted_w_dffe2.d = aligned_dataa_sign_adjusted_dffe2_wi;
+	aligned_dataa_sign_adjusted_w_dffe2.ena = clk_en;
+	aligned_dataa_sign_dffe1.clk = clock;
+	aligned_dataa_sign_dffe1.clrn = (! aclr);
+	aligned_dataa_sign_dffe1.d = aligned_dataa_sign_dffe1_wi;
+	aligned_dataa_sign_dffe1.ena = clk_en;
+	aligned_datab_sign_adjusted_w_dffe2.clk = clock;
+	aligned_datab_sign_adjusted_w_dffe2.clrn = (! aclr);
+	aligned_datab_sign_adjusted_w_dffe2.d = aligned_datab_sign_adjusted_dffe2_wi;
+	aligned_datab_sign_adjusted_w_dffe2.ena = clk_en;
+	aligned_datab_sign_dffe1.clk = clock;
+	aligned_datab_sign_dffe1.clrn = (! aclr);
+	aligned_datab_sign_dffe1.d = aligned_datab_sign_dffe1_wi;
+	aligned_datab_sign_dffe1.ena = clk_en;
+	both_inputs_zero_dffe2.clk = clock;
+	both_inputs_zero_dffe2.clrn = (! aclr);
+	both_inputs_zero_dffe2.d = both_inputs_zero_dffe2_wi;
+	both_inputs_zero_dffe2.ena = clk_en;
+	exp_a_all_one_w_dffe1.clk = clock;
+	exp_a_all_one_w_dffe1.clrn = (! aclr);
+	exp_a_all_one_w_dffe1.d = exp_a_all_one_dffe1_wi;
+	exp_a_all_one_w_dffe1.ena = clk_en;
+	exp_a_not_zero_w_dffe1.clk = clock;
+	exp_a_not_zero_w_dffe1.clrn = (! aclr);
+	exp_a_not_zero_w_dffe1.d = exp_a_not_zero_dffe1_wi;
+	exp_a_not_zero_w_dffe1.ena = clk_en;
+	exp_aeb_w_dffe2.clk = clock;
+	exp_aeb_w_dffe2.clrn = (! aclr);
+	exp_aeb_w_dffe2.d = exp_aeb_w_dffe2_wi;
+	exp_aeb_w_dffe2.ena = clk_en;
+	exp_b_all_one_w_dffe1.clk = clock;
+	exp_b_all_one_w_dffe1.clrn = (! aclr);
+	exp_b_all_one_w_dffe1.d = exp_b_all_one_dffe1_wi;
+	exp_b_all_one_w_dffe1.ena = clk_en;
+	exp_b_not_zero_w_dffe1.clk = clock;
+	exp_b_not_zero_w_dffe1.clrn = (! aclr);
+	exp_b_not_zero_w_dffe1.d = exp_b_not_zero_dffe1_wi;
+	exp_b_not_zero_w_dffe1.ena = clk_en;
+	input_dataa_nan_dffe2.clk = clock;
+	input_dataa_nan_dffe2.clrn = (! aclr);
+	input_dataa_nan_dffe2.d = input_dataa_nan_dffe2_wi;
+	input_dataa_nan_dffe2.ena = clk_en;
+	input_datab_nan_dffe2.clk = clock;
+	input_datab_nan_dffe2.clrn = (! aclr);
+	input_datab_nan_dffe2.d = input_datab_nan_dffe2_wi;
+	input_datab_nan_dffe2.ena = clk_en;
+	man_a_not_zero_w_dffe1a[].clk = clock;
+	man_a_not_zero_w_dffe1a[].clrn = (! aclr);
+	man_a_not_zero_w_dffe1a[].d = man_a_not_zero_dffe1_wi[];
+	man_a_not_zero_w_dffe1a[].ena = clk_en;
+	man_b_not_zero_w_dffe1a[].clk = clock;
+	man_b_not_zero_w_dffe1a[].clrn = (! aclr);
+	man_b_not_zero_w_dffe1a[].d = man_b_not_zero_dffe1_wi[];
+	man_b_not_zero_w_dffe1a[].ena = clk_en;
+	out_aeb_w_dffe3.clk = clock;
+	out_aeb_w_dffe3.clrn = (! aclr);
+	out_aeb_w_dffe3.d = out_aeb_dffe3_wi;
+	out_aeb_w_dffe3.ena = clk_en;
+	cmpr1.aclr = aclr;
+	cmpr1.clken = clk_en;
+	cmpr1.clock = clock;
+	cmpr1.dataa[7..0] = aligned_dataa_w[30..23];
+	cmpr1.datab[7..0] = aligned_datab_w[30..23];
+	cmpr2.aclr = aclr;
+	cmpr2.clken = clk_en;
+	cmpr2.clock = clock;
+	cmpr2.dataa[7..0] = aligned_dataa_w[22..15];
+	cmpr2.datab[7..0] = aligned_datab_w[22..15];
+	cmpr3.aclr = aclr;
+	cmpr3.clken = clk_en;
+	cmpr3.clock = clock;
+	cmpr3.dataa[7..0] = aligned_dataa_w[14..7];
+	cmpr3.datab[7..0] = aligned_datab_w[14..7];
+	cmpr4.aclr = aclr;
+	cmpr4.clken = clk_en;
+	cmpr4.clock = clock;
+	cmpr4.dataa[6..0] = aligned_dataa_w[6..0];
+	cmpr4.datab[6..0] = aligned_datab_w[6..0];
+	aclr = GND;
+	aeb = out_aeb_dffe3_wo;
+	aligned_dataa_sign_adjusted_dffe2_wi = aligned_dataa_sign_adjusted_w;
+	aligned_dataa_sign_adjusted_dffe2_wo = aligned_dataa_sign_adjusted_w_dffe2.q;
+	aligned_dataa_sign_adjusted_w = (aligned_dataa_sign_dffe1_wo & (! input_dataa_zero_w));
+	aligned_dataa_sign_dffe1_wi = aligned_dataa_sign_w;
+	aligned_dataa_sign_dffe1_wo = aligned_dataa_sign_dffe1.q;
+	aligned_dataa_sign_w = dataa[31..31];
+	aligned_dataa_w[] = ( dataa[30..0]);
+	aligned_datab_sign_adjusted_dffe2_wi = aligned_datab_sign_adjusted_w;
+	aligned_datab_sign_adjusted_dffe2_wo = aligned_datab_sign_adjusted_w_dffe2.q;
+	aligned_datab_sign_adjusted_w = (aligned_datab_sign_dffe1_wo & (! input_datab_zero_w));
+	aligned_datab_sign_dffe1_wi = aligned_datab_sign_w;
+	aligned_datab_sign_dffe1_wo = aligned_datab_sign_dffe1.q;
+	aligned_datab_sign_w = datab[31..31];
+	aligned_datab_w[] = ( datab[30..0]);
+	both_inputs_zero = (input_dataa_zero_w & input_datab_zero_w);
+	both_inputs_zero_dffe2_wi = both_inputs_zero;
+	both_inputs_zero_dffe2_wo = both_inputs_zero_dffe2.q;
+	clk_en = VCC;
+	exp_a_all_one_dffe1_wi = exp_a_all_one_w[7..7];
+	exp_a_all_one_dffe1_wo = exp_a_all_one_w_dffe1.q;
+	exp_a_all_one_w[] = ( (dataa[30..30] & exp_a_all_one_w[6..6]), (dataa[29..29] & exp_a_all_one_w[5..5]), (dataa[28..28] & exp_a_all_one_w[4..4]), (dataa[27..27] & exp_a_all_one_w[3..3]), (dataa[26..26] & exp_a_all_one_w[2..2]), (dataa[25..25] & exp_a_all_one_w[1..1]), (dataa[24..24] & exp_a_all_one_w[0..0]), dataa[23..23]);
+	exp_a_not_zero_dffe1_wi = exp_a_not_zero_w[7..7];
+	exp_a_not_zero_dffe1_wo = exp_a_not_zero_w_dffe1.q;
+	exp_a_not_zero_w[] = ( (dataa[30..30] # exp_a_not_zero_w[6..6]), (dataa[29..29] # exp_a_not_zero_w[5..5]), (dataa[28..28] # exp_a_not_zero_w[4..4]), (dataa[27..27] # exp_a_not_zero_w[3..3]), (dataa[26..26] # exp_a_not_zero_w[2..2]), (dataa[25..25] # exp_a_not_zero_w[1..1]), (dataa[24..24] # exp_a_not_zero_w[0..0]), dataa[23..23]);
+	exp_aeb[] = ( cmpr4.aeb, cmpr3.aeb, cmpr2.aeb, cmpr1.aeb);
+	exp_aeb_tmp_w[] = ( (exp_aeb[3..3] & exp_aeb_tmp_w[2..2]), (exp_aeb[2..2] & exp_aeb_tmp_w[1..1]), (exp_aeb[1..1] & exp_aeb_tmp_w[0..0]), exp_aeb[0..0]);
+	exp_aeb_w = exp_aeb_tmp_w[3..3];
+	exp_aeb_w_dffe2_wi = exp_aeb_w;
+	exp_aeb_w_dffe2_wo = exp_aeb_w_dffe2.q;
+	exp_agb[] = ( cmpr4.agb, cmpr3.agb, cmpr2.agb, cmpr1.agb);
+	exp_agb_tmp_w[] = ( (exp_agb_tmp_w[2..2] # exp_eq_gt_grp[3..3]), (exp_agb_tmp_w[1..1] # exp_eq_gt_grp[2..2]), (exp_agb_tmp_w[0..0] # exp_eq_gt_grp[1..1]), exp_eq_gt_grp[0..0]);
+	exp_b_all_one_dffe1_wi = exp_b_all_one_w[7..7];
+	exp_b_all_one_dffe1_wo = exp_b_all_one_w_dffe1.q;
+	exp_b_all_one_w[] = ( (datab[30..30] & exp_b_all_one_w[6..6]), (datab[29..29] & exp_b_all_one_w[5..5]), (datab[28..28] & exp_b_all_one_w[4..4]), (datab[27..27] & exp_b_all_one_w[3..3]), (datab[26..26] & exp_b_all_one_w[2..2]), (datab[25..25] & exp_b_all_one_w[1..1]), (datab[24..24] & exp_b_all_one_w[0..0]), datab[23..23]);
+	exp_b_not_zero_dffe1_wi = exp_b_not_zero_w[7..7];
+	exp_b_not_zero_dffe1_wo = exp_b_not_zero_w_dffe1.q;
+	exp_b_not_zero_w[] = ( (datab[30..30] # exp_b_not_zero_w[6..6]), (datab[29..29] # exp_b_not_zero_w[5..5]), (datab[28..28] # exp_b_not_zero_w[4..4]), (datab[27..27] # exp_b_not_zero_w[3..3]), (datab[26..26] # exp_b_not_zero_w[2..2]), (datab[25..25] # exp_b_not_zero_w[1..1]), (datab[24..24] # exp_b_not_zero_w[0..0]), datab[23..23]);
+	exp_eq_grp[] = ( (exp_eq_grp[1..1] & exp_aeb[2..2]), (exp_eq_grp[0..0] & exp_aeb[1..1]), exp_aeb[0..0]);
+	exp_eq_gt_grp[] = ( (exp_eq_grp[2..2] & exp_agb[3..3]), (exp_eq_grp[1..1] & exp_agb[2..2]), (exp_eq_grp[0..0] & exp_agb[1..1]), exp_agb[0..0]);
+	input_dataa_nan_dffe2_wi = input_dataa_nan_w;
+	input_dataa_nan_dffe2_wo = input_dataa_nan_dffe2.q;
+	input_dataa_nan_w = (exp_a_all_one_dffe1_wo & man_a_not_zero_merge_w[1..1]);
+	input_dataa_zero_w = (! exp_a_not_zero_dffe1_wo);
+	input_datab_nan_dffe2_wi = input_datab_nan_w;
+	input_datab_nan_dffe2_wo = input_datab_nan_dffe2.q;
+	input_datab_nan_w = (exp_b_all_one_dffe1_wo & man_b_not_zero_merge_w[1..1]);
+	input_datab_zero_w = (! exp_b_not_zero_dffe1_wo);
+	man_a_not_zero_dffe1_wi[] = ( man_a_not_zero_w[22..22], man_a_not_zero_w[11..11]);
+	man_a_not_zero_dffe1_wo[] = man_a_not_zero_w_dffe1a[].q;
+	man_a_not_zero_merge_w[] = ( (man_a_not_zero_dffe1_wo[1..1] # man_a_not_zero_merge_w[0..0]), man_a_not_zero_dffe1_wo[0..0]);
+	man_a_not_zero_w[] = ( (dataa[22..22] # man_a_not_zero_w[21..21]), (dataa[21..21] # man_a_not_zero_w[20..20]), (dataa[20..20] # man_a_not_zero_w[19..19]), (dataa[19..19] # man_a_not_zero_w[18..18]), (dataa[18..18] # man_a_not_zero_w[17..17]), (dataa[17..17] # man_a_not_zero_w[16..16]), (dataa[16..16] # man_a_not_zero_w[15..15]), (dataa[15..15] # man_a_not_zero_w[14..14]), (dataa[14..14] # man_a_not_zero_w[13..13]), (dataa[13..13] # man_a_not_zero_w[12..12]), dataa[12..12], (dataa[11..11] # man_a_not_zero_w[10..10]), (dataa[10..10] # man_a_not_zero_w[9..9]), (dataa[9..9] # man_a_not_zero_w[8..8]), (dataa[8..8] # man_a_not_zero_w[7..7]), (dataa[7..7] # man_a_not_zero_w[6..6]), (dataa[6..6] # man_a_not_zero_w[5..5]), (dataa[5..5] # man_a_not_zero_w[4..4]), (dataa[4..4] # man_a_not_zero_w[3..3]), (dataa[3..3] # man_a_not_zero_w[2..2]), (dataa[2..2] # man_a_not_zero_w[1..1]), (dataa[1..1] # man_a_not_zero_w[0..0]), dataa[0..0]);
+	man_b_not_zero_dffe1_wi[] = ( man_b_not_zero_w[22..22], man_b_not_zero_w[11..11]);
+	man_b_not_zero_dffe1_wo[] = man_b_not_zero_w_dffe1a[].q;
+	man_b_not_zero_merge_w[] = ( (man_b_not_zero_dffe1_wo[1..1] # man_b_not_zero_merge_w[0..0]), man_b_not_zero_dffe1_wo[0..0]);
+	man_b_not_zero_w[] = ( (datab[22..22] # man_b_not_zero_w[21..21]), (datab[21..21] # man_b_not_zero_w[20..20]), (datab[20..20] # man_b_not_zero_w[19..19]), (datab[19..19] # man_b_not_zero_w[18..18]), (datab[18..18] # man_b_not_zero_w[17..17]), (datab[17..17] # man_b_not_zero_w[16..16]), (datab[16..16] # man_b_not_zero_w[15..15]), (datab[15..15] # man_b_not_zero_w[14..14]), (datab[14..14] # man_b_not_zero_w[13..13]), (datab[13..13] # man_b_not_zero_w[12..12]), datab[12..12], (datab[11..11] # man_b_not_zero_w[10..10]), (datab[10..10] # man_b_not_zero_w[9..9]), (datab[9..9] # man_b_not_zero_w[8..8]), (datab[8..8] # man_b_not_zero_w[7..7]), (datab[7..7] # man_b_not_zero_w[6..6]), (datab[6..6] # man_b_not_zero_w[5..5]), (datab[5..5] # man_b_not_zero_w[4..4]), (datab[4..4] # man_b_not_zero_w[3..3]), (datab[3..3] # man_b_not_zero_w[2..2]), (datab[2..2] # man_b_not_zero_w[1..1]), (datab[1..1] # man_b_not_zero_w[0..0]), datab[0..0]);
+	out_aeb_dffe3_wi = out_aeb_w;
+	out_aeb_dffe3_wo = out_aeb_w_dffe3.q;
+	out_aeb_w = ((((! (aligned_dataa_sign_adjusted_dffe2_wo $ aligned_datab_sign_adjusted_dffe2_wo)) & exp_aeb_w_dffe2_wo) # both_inputs_zero_dffe2_wo) & (! out_unordered_w));
+	out_unordered_w = (input_dataa_nan_dffe2_wo # input_datab_nan_dffe2_wo);
+END;
+--VALID FILE
